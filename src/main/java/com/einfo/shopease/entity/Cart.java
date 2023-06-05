@@ -1,8 +1,11 @@
 package com.einfo.shopease.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +18,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Entity(name="cart_table")
 @Table(name="cart_table")
@@ -30,7 +34,7 @@ public class Cart {
 	
 	@OneToMany
 	@JoinColumn(name="pid")
-	private List<Product> product;
+	private Set<Product> products = new HashSet<>();
 	
 	@OneToOne
 	@JoinColumn(name="uid")
